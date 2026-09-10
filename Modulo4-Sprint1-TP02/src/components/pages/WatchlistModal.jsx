@@ -1,39 +1,34 @@
-import React from 'react'
-import ButtonFunction from '../../components/Button'
-
-const WatchlistModal = ({ setOpen, movies, removeMovie }) => {
-
-  return (
-<div className="bg-zinc-950 text-stone-100 rounded-2xl w-[90%] max-w-5xl shadow-2xl border border-rose-900/40"> 
-      <div className="flex justify-between items-center p-5 border-b border-rose-900/40"> 
- 
-        <h2 className="font-bold text-xl tracking-wide"> My Watchlist</h2> 
-
-        <ButtonFunction texto="X" opcion="alternarModal" setOpen={setOpen} styles="text-stone-400 hover:text-rose-400 text-xl transition"/>
-
-      </div> 
-   
-      <div className="p-5 space-y-4 h-[750px] overflow-y-auto"> 
-   
-        {movies.length > 0 ? ( movies.map((movie) => ( 
-            <div key={movie.id} className="flex items-center justify-between bg-[radial-gradient(circle_at_center,_#3f3035,_#18181b_75%)] p-4 rounded-xl border border-rose-900/50"> 
-               
-              <div className="flex items-center gap-4"> 
-                <img src={movie.image} alt={movie.title} className="w-24 h-32 object-cover rounded"/> 
-                <p className="font-medium text-stone-200">{movie.title}</p> 
-              </div> 
-
-              <ButtonFunction texto="remove" opcion="removeMovie" movie={movie} removeMovie={removeMovie} styles="bg-rose-800 px-4 py-1.5 rounded-lg text-sm text-white hover:bg-rose-600 transition"/>
- 
-            </div>)))  
-            :  
-            ( <p className="text-center text-stone-500"> 
-              No hay películas 
-              </p>)} 
- 
-      </div> 
-    </div>
-  )
-}
+const WatchlistModal = ({ lista, toggleItem, cerrarLista }) => (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+    <section className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-surface p-6 text-text">
+      <div className="mb-6 flex items-center justify-between">
+        <h2 className="text-2xl font-bold">Mi lista</h2>
+        <button type="button" onClick={cerrarLista} className="text-2xl text-muted hover:text-text">
+          ×
+        </button>
+      </div>
+      {lista.length === 0 ? (
+        <p className="py-10 text-center text-muted">
+          Todavía no agregaste nada, buscá algo arriba 👆
+        </p>
+      ) : (
+        <div className="space-y-3">
+          {lista.map((item) => (
+            <div key={item.id} className="flex items-center justify-between rounded-xl bg-background p-3">
+              <span>{item.nombre}</span>
+              <button
+                type="button"
+                onClick={() => toggleItem(item)}
+                className="rounded-lg border border-primary/50 px-3 py-1 text-sm hover:bg-primary"
+              >
+                Quitar
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  </div>
+)
 
 export default WatchlistModal
