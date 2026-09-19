@@ -17,7 +17,6 @@ const Header = ({ setOpen }) => {
       </div>
       
       <ButtonFuction texto="Watchlist" opcion="alternarModal" setOpen={setOpen} styles="px-6 py-2.5 rounded-xl border border-rose-500/50 bg-white/5 text-stone-200 font-semibold backdrop-blur-sm hover:bg-rose-500/15 hover:border-rose-400 hover:text-white transition duration-300"/>
-
   </header>
 </>
   )

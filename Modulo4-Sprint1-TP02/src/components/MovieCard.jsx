@@ -18,7 +18,7 @@ return (
                 <p className="text-stone-400 text-sm">{movie.year}</p> 
                 <p className="text-stone-300 text-sm">{movie.description}</p> 
 
-              <ButtonFunction texto="Añadir" opcion="guardarPelicula" setMovies={setMovies} movie={movie} styles="mt-4 text-white px-4 py-2 rounded-full font-medium bg-[radial-gradient(circle_at_center,_#be123c,_#881337_75%)] hover:bg-[radial-gradient(circle_at_center,_#f43f5e,_#be123c_75%)] transition"/>
+              <ButtonFunction texto={`${movies.some((peliculaGuardada) => peliculaGuardada.id === movie.id) ? "En watchlist" : "Añadir"}`}  opcion="guardarPelicula" setMovies={setMovies} movie={movie} styles="mt-4 text-white px-4 py-2 rounded-full font-medium bg-[radial-gradient(circle_at_center,_#be123c,_#881337_75%)] hover:bg-[radial-gradient(circle_at_center,_#f43f5e,_#be123c_75%)] transition"/>
                
               </div> 
           </div> 

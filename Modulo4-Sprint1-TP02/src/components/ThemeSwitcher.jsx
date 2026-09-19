@@ -1,11 +1,12 @@
 import { useState } from "react"
 import { useEffect } from "react"
 
-const CLAVE_TEMA = 'verduleria:tema'
-const ThemeSwitcher = () => {
   const [modoOscuro, setModoOscuro] = useState(() => {
     return localStorage.getItem(CLAVE_TEMA) === 'oscuro'
   })
+
+const CLAVE_TEMA = 'pagina:tema'
+const ThemeSwitcher = () => {
 
   useEffect(() => {
     localStorage.setItem(CLAVE_TEMA, modoOscuro ? 'oscuro' : 'claro')
